@@ -2,7 +2,7 @@ import 'dart:math' show Random;
 import '../core/card.dart' show Card;
 import '../core/deck.dart' show Deck;
 import '../core/hand.dart' show Hand;
-import '../exceptions/hand_length.dart' show HandLengthException;
+import '../exceptions/exceptions.dart' show HandLengthException;
 import 'package:trotter/trotter.dart' show Combinations;
 
 class FiveCardDrawHand {

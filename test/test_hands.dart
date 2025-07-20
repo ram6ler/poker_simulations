@@ -5,7 +5,7 @@ final beats = (Hand a, Hand b) => a.beats(b),
 void main() {
   for (final (message, handA, handB, f) in [
     (
-      'Royal Flush beats Straight Flush...',
+      'Royal flush beats straight Flush...',
       Hand([
         Card(Face.ten, Suit.spades),
         Card(Face.jack, Suit.spades),
@@ -23,7 +23,7 @@ void main() {
       beats,
     ),
     (
-      'Four of a Kind beats Full House',
+      'Four of a kind beats full House...',
       Hand([
         Card(Face.nine, Suit.spades),
         Card(Face.nine, Suit.hearts),
@@ -45,7 +45,7 @@ void main() {
       beats,
     ),
     (
-      'Flush beats Straight',
+      'Flush beats straight...',
       Hand([
         Card(Face.ace, Suit.hearts),
         Card(Face.two, Suit.hearts),
@@ -67,7 +67,7 @@ void main() {
       beats,
     ),
     (
-      'Pair vs High Card',
+      'Pair beats high card',
       Hand([
         Card(Face.two, Suit.spades),
         Card(Face.ace, Suit.hearts),
@@ -89,7 +89,7 @@ void main() {
       beats,
     ),
     (
-      'Three of a Kind beats Two Pair',
+      'Three of a kind beats two pairs...',
       Hand([
         Card(Face.five, Suit.spades),
         Card(Face.five, Suit.hearts),
@@ -111,7 +111,7 @@ void main() {
       beats,
     ),
     (
-      'Two Pair beats Pair',
+      'Two low pairs beats high pair...',
       Hand([
         Card(Face.ten, Suit.spades),
         Card(Face.ten, Suit.hearts),
@@ -133,7 +133,7 @@ void main() {
       beats,
     ),
     (
-      'Pair beats High Card',
+      'Low pair beats high card...',
       Hand([
         Card(Face.two, Suit.spades),
         Card(Face.ace, Suit.hearts),
@@ -155,7 +155,7 @@ void main() {
       beats,
     ),
     (
-      'High Card Ace beats High Card King',
+      'High card ace beats high card king...',
       Hand([
         Card(Face.ace, Suit.spades),
         Card(Face.two, Suit.hearts),
@@ -177,7 +177,7 @@ void main() {
       beats,
     ),
     (
-      'Tie: Same hand type and score',
+      'Same hand type and score ties...',
       Hand([
         Card(Face.ace, Suit.spades),
         Card(Face.ace, Suit.hearts),
@@ -199,7 +199,7 @@ void main() {
       ties,
     ),
     (
-      'Straight with King high beats Straight with Ace low',
+      'Straight with king high beats straight with ace low...',
       Hand([
         Card(Face.ten, Suit.spades),
         Card(Face.jack, Suit.hearts),
@@ -221,7 +221,7 @@ void main() {
       beats,
     ),
     (
-      'Full House with higher triple beats Full House with lower triple',
+      'Full house with high triple beats full house with low triple...',
       Hand([
         Card(Face.king, Suit.spades),
         Card(Face.king, Suit.hearts),
@@ -243,7 +243,7 @@ void main() {
       beats,
     ),
     (
-      'Flush with higher card beats Flush with lower card',
+      'Flush with higher card beats flush with lower card',
       Hand([
         Card(Face.ace, Suit.hearts),
         Card(Face.king, Suit.hearts),
@@ -265,7 +265,7 @@ void main() {
       beats,
     ),
     (
-      'Straight Flush beats Four of a Kind',
+      'Straight flush beats four of a kind...',
       Hand([
         Card(Face.ace, Suit.hearts),
         Card(Face.two, Suit.hearts),
@@ -283,24 +283,6 @@ void main() {
         Card(Face.nine, Suit.spades),
         Card(Face.five, Suit.hearts),
         Card(Face.four, Suit.clubs),
-      ]),
-      beats,
-    ),
-    (
-      'Pair beats nothing',
-      Hand([
-        Card(Face.two, Suit.clubs),
-        Card(Face.two, Suit.hearts),
-        Card(Face.three, Suit.hearts),
-        Card(Face.four, Suit.diamonds),
-        Card(Face.five, Suit.hearts),
-      ]),
-      Hand([
-        Card(Face.ace, Suit.spades),
-        Card(Face.king, Suit.hearts),
-        Card(Face.queen, Suit.clubs),
-        Card(Face.jack, Suit.diamonds),
-        Card(Face.nine, Suit.spades),
       ]),
       beats,
     ),

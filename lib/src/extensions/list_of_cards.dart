@@ -67,4 +67,12 @@ extension StringsFromListOfCards on List<Card> {
       '${_topLayer(this)}\n'
       '${_middleLayer(this, indices)}\n'
       '${_bottomLayer(this)}';
+
+  /// A list of string representation of the cards.
+  List<String> get asListOfStrings => [
+    for (final card in this) '${card.face.character}${card.suit.character}',
+  ];
+
+  /// A string representation of the cards.
+  String get asString => asListOfStrings.join(", ");
 }

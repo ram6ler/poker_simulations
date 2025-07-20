@@ -3,7 +3,7 @@ import 'package:trotter/trotter.dart' show Combinations;
 import 'card.dart' show Card;
 import 'types.dart' show Face, HandType, Strength;
 import '../extensions/list_of_cards.dart' show StringsFromListOfCards;
-import '../exceptions/hand_length.dart' show HandLengthException;
+import '../exceptions/exceptions.dart' show HandLengthException;
 
 /// Miniscule value to prevent the maximum strength of one
 /// hand type to overlap the set of strengths for the next

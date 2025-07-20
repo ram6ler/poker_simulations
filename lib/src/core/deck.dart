@@ -1,12 +1,7 @@
 import 'dart:math' show Random;
 import 'card.dart' show Card;
 import '../extensions/list_of_cards.dart' show StringsFromListOfCards;
-
-// final rand = Random();
-
-class CardDepletionError extends RangeError {
-  CardDepletionError() : super('Trying to draw cards from a depleted deck.');
-}
+import '../exceptions/exceptions.dart' show CardDepletionException;
 
 class Deck {
   final List<Card> _cards;
@@ -34,6 +29,7 @@ class Deck {
   /// 44: 7♠  45: 8♠  46: 9♠  47: T♠
   /// 48: J♠  49: Q♠  50: K♠  51: A♠
   /// ```
+  ///
   Deck() : _cards = [for (var i = 0; i < 52; i++) Card.fromIndex(i)];
 
   /// A deck consisting of the 52 standard poker cards with
@@ -42,14 +38,14 @@ class Deck {
     : _cards = [for (var i = 0; i < 52; i++) Card.fromIndex(i)]
         ..removeWhere((card) => cards.contains(card));
 
-  /// Returns all cards to the deck and shuffles.
+  /// Returns all cards originally in the deck and shuffles.
   void shuffle({int? seed}) {
     final rand = Random(seed);
     _position = 0;
     _cards.sort((a, b) => [-1, 0, 1][rand.nextInt(3)]);
   }
 
-  /// Returns n cards taken from the pack, if possible.
+  /// Returns `n` cards taken from the pack, if possible.
   /// Throws a `CardDepletionError` if there are no more cards in the deck.
   List<Card> take(int n) {
     final cardsTaken = <Card>[];
@@ -58,7 +54,9 @@ class Deck {
         cardsTaken.add(_cards[_position]);
         _position++;
       } else
-        throw CardDepletionError();
+        throw CardDepletionException(
+          'Trying to take cards from a depleted deck.',
+        );
     }
     return cardsTaken;
   }

@@ -13,8 +13,8 @@ export "src/extensions/list_of_strings.dart" show CardsFromListOfStrings;
 export "src/extensions/strings.dart" show CardsFromStrings;
 
 // Exceptions
-export "src/exceptions/bad_card_format.dart" show BadCardFormatException;
-export "src/exceptions/hand_length.dart" show HandLengthException;
+export "src/exceptions/exceptions.dart"
+    show BadCardFormatException, CardDepletionException, HandLengthException;
 
 // Simulation classes
 export "src/simulations/strength_stats.dart" show StrengthStats;

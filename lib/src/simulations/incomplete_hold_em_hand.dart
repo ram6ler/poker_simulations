@@ -2,7 +2,7 @@ import 'strength_stats.dart' show StrengthStats, simulate;
 import '../core/card.dart' show Card;
 import '../core/deck.dart' show Deck;
 import '../extensions/list_of_cards.dart' show StringsFromListOfCards;
-import '../exceptions/hand_length.dart' show HandLengthException;
+import '../exceptions/exceptions.dart' show HandLengthException;
 
 class IncompleteHoldEmHand {
   final List<Card> hole, flop, turn, river;
@@ -72,7 +72,7 @@ class IncompleteHoldEmHand {
     for (final (title, cards) in pockets) {
       sb
         ..writeln('$title:')
-        ..write(cards.isEmpty ? '  Not dealt' : '${cards.drawing}\n');
+        ..write(cards.isEmpty ? '  Not dealt\n' : '${cards.drawing}\n');
     }
     return sb.toString();
   }

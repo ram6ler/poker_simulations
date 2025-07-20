@@ -1,6 +1,6 @@
 import '../core/card.dart' show Card;
 import '../core/types.dart' show Face, Suit;
-import '../exceptions/bad_card_format.dart' show BadCardFormatException;
+import '../exceptions/exceptions.dart' show BadCardFormatException;
 
 const _faces = {
       '2': Face.two,
@@ -47,7 +47,6 @@ extension CardsFromListOfStrings on List<String> {
       cards.add(Card(_faces[f]!, _suits[s]!));
     }
 
-    return cards.toSet().toList()
-      ..sort((a, b) => a.face.index.compareTo(b.face.index));
+    return cards.toSet().toList();
   }
 }

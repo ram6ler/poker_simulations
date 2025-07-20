@@ -2,7 +2,7 @@ import 'strength_stats.dart' show simulate, StrengthStats;
 import '../core/card.dart' show Card;
 import '../core/deck.dart' show Deck;
 import '../extensions/list_of_cards.dart' show StringsFromListOfCards;
-import '../exceptions/hand_length.dart' show HandLengthException;
+import '../exceptions/exceptions.dart' show HandLengthException;
 
 class IncompleteHand {
   final List<Card> cards;

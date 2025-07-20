@@ -29,6 +29,7 @@ class Card {
   /// 44: 7♠  45: 8♠  46: 9♠  47: T♠
   /// 48: J♠  49: Q♠  50: K♠  51: A♠
   /// ```
+  ///
   Card.fromIndex(this.index)
     : face = Face.values[index % 13],
       suit = Suit.values[index ~/ 13];
@@ -37,6 +38,7 @@ class Card {
   factory Card(Face face, Suit suit) =>
       Card.fromIndex(suit.index * 13 + face.index);
 
+  /// A string drawing of the card.
   String get drawing =>
       '.--.\n'
       '|$this|\n'

@@ -28,12 +28,14 @@ class StrengthStats {
       ..writeln('    Variance: ${variance.toStringAsFixed(digits)}')
       ..writeln('Distribution:');
     for (final (i, handType) in HandType.values.indexed) {
+      final p = barWidth * distribution[(i, i + 1)]! / maxP, blocks = p.toInt();
+      sb.write((i == 9 ? '=9 |' : '[$i, ${i + 1}) |').padLeft(9));
+      if (p > 0 && blocks == 0) {
+        sb.write(':'.padRight(barWidth + 1, '.'));
+      } else {
+        sb.write(('░' * blocks).padRight(barWidth + 1, '.'));
+      }
       sb
-        ..write((i == 9 ? '=9: ' : '[$i, ${i + 1}): ').padLeft(9))
-        ..write(
-          ('░' * (barWidth * distribution[(i, i + 1)]! / maxP).toInt())
-              .padRight(barWidth + 1, '.'),
-        )
         ..write(' ')
         ..write(distribution[(i, i + 1)]!.toStringAsFixed(digits))
         ..writeln(' ${handType.description}');
