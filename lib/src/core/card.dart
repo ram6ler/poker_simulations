@@ -51,5 +51,5 @@ class Card {
   int get hashCode => index.hashCode;
 
   @override
-  bool operator ==(Object that) => that is Card && that.index == index;
+  bool operator ==(Object other) => other is Card && other.index == index;
 }

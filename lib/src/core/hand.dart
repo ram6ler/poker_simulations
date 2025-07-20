@@ -59,7 +59,9 @@ Strength _strength(HandType handType, int handScore) =>
   for (final combination in Combinations<Card>(5, cards).iterable) {
     /// The face counts in the combination of cards.
     final counts = {for (final card in combination) card.face: 0};
-    for (final card in combination) counts[card.face] = counts[card.face]! + 1;
+    for (final card in combination) {
+      counts[card.face] = counts[card.face]! + 1;
+    }
 
     final hasStraight = (() {
           final ranks = [for (final card in combination) card.face.index]
@@ -84,7 +86,11 @@ Strength _strength(HandType handType, int handScore) =>
         hasFullHouse = hasPair && hasThreeOfAKind,
         hasTwoPairs = (() {
           var pairs = 0;
-          for (final f in counts.values) if (f == 2) pairs++;
+          for (final f in counts.values) {
+            if (f == 2) {
+              pairs++;
+            }
+          }
           return pairs == 2;
         })();
 
@@ -95,10 +101,11 @@ Strength _strength(HandType handType, int handScore) =>
         ranks[index] = -1;
       }
       final score = ranks.fold(ranks.first, (a, b) => b > a ? b : a);
-      if (score == Face.ace.index)
+      if (score == Face.ace.index) {
         updateBestIfNecessary(HandType.royalFlush, 0, combination);
-      else
+      } else {
         updateBestIfNecessary(HandType.straightFlush, score, combination);
+      }
     } else if (hasFourOfAKind) {
       var four = -1, single = -1;
       for (final MapEntry(key: rank, value: frequency) in counts.entries) {
@@ -200,8 +207,9 @@ class Hand {
 
   /// A hand consisting of at least five cards.
   Hand(List<Card> cards) : _cards = List<Card>.unmodifiable(cards.toSet()) {
-    if (cards.length < 5)
+    if (cards.length < 5) {
       throw HandLengthException('Hand must contain at least five cards');
+    }
     _evaluation = _evaluate(cards);
   }
 

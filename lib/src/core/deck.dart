@@ -53,10 +53,11 @@ class Deck {
       if (_position < _cards.length) {
         cardsTaken.add(_cards[_position]);
         _position++;
-      } else
+      } else {
         throw CardDepletionException(
           'Trying to take cards from a depleted deck.',
         );
+      }
     }
     return cardsTaken;
   }

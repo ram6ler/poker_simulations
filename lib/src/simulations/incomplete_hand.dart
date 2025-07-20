@@ -7,10 +7,11 @@ import '../exceptions/exceptions.dart' show HandLengthException;
 class IncompleteHand {
   final List<Card> cards;
   IncompleteHand(List<Card> cards) : cards = List.unmodifiable(cards) {
-    if (cards.length >= 5)
+    if (cards.length >= 5) {
       throw HandLengthException(
         'An incomplete hand must have fewer than five cards',
       );
+    }
   }
 
   Future<StrengthStats> strengthStats({

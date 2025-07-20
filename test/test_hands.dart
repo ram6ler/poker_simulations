@@ -1,7 +1,8 @@
 import 'package:poker_simulations/poker_simulations.dart';
 
-final beats = (Hand a, Hand b) => a.beats(b),
-    ties = (Hand a, Hand b) => a.strength == b.strength;
+bool beats(Hand a, Hand b) => a.beats(b);
+bool ties(Hand a, Hand b) => a.ties(b);
+
 void main() {
   for (final (message, handA, handB, f) in [
     (

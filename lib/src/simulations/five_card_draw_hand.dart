@@ -8,10 +8,11 @@ import 'package:trotter/trotter.dart' show Combinations;
 class FiveCardDrawHand {
   final List<Card> cards;
   FiveCardDrawHand(List<Card> cards) : cards = List.unmodifiable(cards) {
-    if (cards.length != 5)
+    if (cards.length != 5) {
       throw HandLengthException(
         'A five-card-draw hand must contain five cards',
       );
+    }
   }
 
   Future<({List<Card> keep, List<Card> bin})> binCards({
@@ -20,9 +21,9 @@ class FiveCardDrawHand {
   }) async {
     final rand = Random(seed),
         deck = Deck.withCardsRemoved(cards),
-        subsetsToKeep = [
+        subsetsToKeep = <List<Card>>[
           for (var keep = 2; keep <= 5; keep++)
-            ...Combinations(keep, cards).iterable,
+            ...Combinations<Card>(keep, cards).iterable,
         ];
     var bestSubsetIndex = -1, bestMeanStrength = 0.0;
     for (final (i, subset) in subsetsToKeep.indexed) {

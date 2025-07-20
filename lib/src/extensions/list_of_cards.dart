@@ -1,7 +1,6 @@
 import '../core/card.dart' show Card;
 
-String _topLayer(List<Card> cards) =>
-    '${[for (final _ in cards) '.--.'].join('')}';
+String _topLayer(List<Card> cards) => [for (final _ in cards) '.--.'].join('');
 
 String _face(Card card, bool hidden) => hidden ? '|░░|' : '|$card|';
 
@@ -13,7 +12,7 @@ String _middleLayer(List<Card> cards, [List<int> indices = const []]) {
 }
 
 String _bottomLayer(List<Card> cards) =>
-    '${[for (final _ in cards) "'--'"].join('')}';
+    [for (final _ in cards) "'--'"].join('');
 
 extension StringsFromListOfCards on List<Card> {
   /// A string representation of a list of cards, mainly for debugging.

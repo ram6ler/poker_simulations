@@ -12,33 +12,38 @@ class IncompleteHoldEmHand {
     this.turn = const [],
     this.river = const [],
   }) {
-    if (hole.isNotEmpty && hole.length != 2)
+    if (hole.isNotEmpty && hole.length != 2) {
       throw HandLengthException(
         'The hole must be empty or have two cards; '
         'received:\n${hole.drawing}',
       );
-    if (flop.isNotEmpty && flop.length != 3)
+    }
+    if (flop.isNotEmpty && flop.length != 3) {
       throw HandLengthException(
         'The flop must be empty or have three cards; '
         'received:\n${flop.drawing}',
       );
-    if (turn.isNotEmpty && turn.length != 1)
+    }
+    if (turn.isNotEmpty && turn.length != 1) {
       throw HandLengthException(
         'The turn must be empty or have one card; '
         'received:\n${turn.drawing}',
       );
-    if (river.isNotEmpty && river.length != 1)
+    }
+    if (river.isNotEmpty && river.length != 1) {
       throw HandLengthException(
         'The river must be empty or have one card; '
         'received:\n${river.drawing}',
       );
+    }
 
     final duplicateCheck = [...hole, ...flop, ...turn, ...river];
-    if (duplicateCheck.toSet().length != duplicateCheck.length)
+    if (duplicateCheck.toSet().length != duplicateCheck.length) {
       throw HandLengthException(
         'The hand cannot contain duplicate cards; '
         'received:\n${duplicateCheck.drawing}',
       );
+    }
   }
 
   /// The cards in the hole plus the communal cards.
