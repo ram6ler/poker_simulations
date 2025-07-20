@@ -1,0 +1,12 @@
+name: poker_simulations
+description: A library for modeling and simulating poker hands.
+version: 0.1.0
+repository: https://github.com/ram6ler/poker_simulations
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  trotter: ^2.2.0
+
+
