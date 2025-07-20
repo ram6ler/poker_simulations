@@ -1,6 +1,5 @@
 Welcome to *poker simulations*, a library for modeling poker cards, decks and hands, and for performing simulation-based poker analyses.
 
-
 ## Cards
 
 A card can be instantiated using the `Card` class.
@@ -85,6 +84,7 @@ print(deck);
 .--..--..--..--..--..--..--..--..--..--..--..--..--.
 |2♠||3♠||4♠||5♠||6♠||7♠||8♠||9♠||T♠||J♠||Q♠||K♠||A♠|
 '--''--''--''--''--''--''--''--''--''--''--''--''--'
+
 ```
 
 It is sometimes helpful to have a deck with cards removed.
@@ -107,6 +107,7 @@ print(deck);
 .--..--..--..--..--..--..--..--..--.
 |6♠||7♠||8♠||9♠||T♠||J♠||Q♠||K♠||A♠|
 '--''--''--''--''--''--''--''--''--'
+
 ```
 
 Usually, we want a shuffled deck; the `shuffle` method returns all cards originally in the deck to the deck and shuffles them, optionally taking in a `seed` for reproducible results. 
@@ -129,6 +130,7 @@ print(deck);
 .--..--..--..--..--..--..--..--..--..--..--..--..--.
 |2♠||8♠||6♠||6♦||7♦||5♠||5♦||2♦||6♣||3♦||8♥||J♠||4♣|
 '--''--''--''--''--''--''--''--''--''--''--''--''--'
+
 ```
 
 The deck keeps track of which cards have been taken and which card is at the top of the pile.
