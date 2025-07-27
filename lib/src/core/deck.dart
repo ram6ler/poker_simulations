@@ -6,8 +6,6 @@ import '../exceptions/exceptions.dart' show CardDepletionException;
 class Deck {
   final List<Card> _cards;
 
-  /// A copy of the cards in the deck.
-  List<Card> get cards => [for (final card in _cards) card];
   int _position = 0;
 
   /// A deck consisting of the 52 standard poker cards
@@ -38,27 +36,44 @@ class Deck {
     : _cards = [for (var i = 0; i < 52; i++) Card.fromIndex(i)]
         ..removeWhere((card) => cards.contains(card));
 
+  /// A deck consisting of the provided cards.
+  Deck.withCards(List<Card> cards) : _cards = [for (final card in cards) card];
+
+  /// A copy of the cards in the deck.
+  List<Card> get cards => [for (final card in _cards) card];
+
+  /// The cards removed so far.
+  List<Card> get cardsRemoved => [
+    for (var i = 0; i < _position; i++) _cards[i],
+  ];
+
+  /// The remaining cards.
+  List<Card> get cardsRemaining => [
+    for (var i = _position; i < _cards.length; i++) _cards[i],
+  ];
+
   /// Returns all cards originally in the deck and shuffles.
   void shuffle({int? seed}) {
     final rand = Random(seed);
     _position = 0;
-    _cards.sort((a, b) => [-1, 0, 1][rand.nextInt(3)]);
+    // Fisher-Yates algorithm...
+    for (var i = _cards.length - 1; i > 0; i--) {
+      final j = rand.nextInt(i + 1), temp = _cards[j];
+      _cards[j] = _cards[i];
+      _cards[i] = temp;
+    }
   }
 
   /// Returns `n` cards taken from the pack, if possible.
   /// Throws a `CardDepletionError` if there are no more cards in the deck.
   List<Card> take(int n) {
-    final cardsTaken = <Card>[];
-    for (var i = 0; i < n; i++) {
-      if (_position < _cards.length) {
-        cardsTaken.add(_cards[_position]);
-        _position++;
-      } else {
-        throw CardDepletionException(
-          'Trying to take cards from a depleted deck.',
-        );
-      }
+    if (_position + n > _cards.length) {
+      throw CardDepletionException(
+        'Trying to take cards from a depleted deck.',
+      );
     }
+    final cardsTaken = [for (var i = 0; i < n; i++) _cards[_position + i]];
+    _position += cardsTaken.length;
     return cardsTaken;
   }
 

@@ -6,6 +6,7 @@ import 'package:poker_simulations/poker_simulations.dart';
 /// See https://stats.stackexchange.com/q/79552.
 double entropy(Deck deck) {
   final cards = deck.cards;
+
   final histogram = [for (final _ in Iterable.generate(52)) 0.0];
   for (var i = 0; i < 52; i++) {
     final difference = (cards[(i + 1) % 52].index - cards[i].index) % 52;
